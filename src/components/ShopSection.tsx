@@ -15,6 +15,12 @@ const ShopSection = ({ initialCategory }: Props) => {
   const [search, setSearch] = useState('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
+  useEffect(() => {
+    if (initialCategory && initialCategory !== 'All') {
+      setActive(initialCategory as Category);
+    }
+  }, [initialCategory]);
+
   const filtered = products.filter(p => {
     const matchCat = active === 'All' || p.category === active;
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase()) || p.category.toLowerCase().includes(search.toLowerCase());
