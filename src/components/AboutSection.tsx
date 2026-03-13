@@ -1,34 +1,56 @@
 import { Gem, Globe, Heart, Sparkles } from 'lucide-react';
 
 const features = [
-  { icon: Globe, title: 'Sourced Globally', desc: 'Handpicked from Sri Lanka & India' },
+  { icon: Globe, title: 'Globally Sourced', desc: 'Handpicked from artisans in Sri Lanka & India' },
   { icon: Gem, title: 'Premium Quality', desc: 'Only the finest fabrics & craftsmanship' },
-  { icon: Sparkles, title: 'Limited Editions', desc: 'Exclusive collections, never mass-produced' },
-  { icon: Heart, title: 'Cultural Beauty', desc: 'Celebrating South Asian textile heritage' },
+  { icon: Sparkles, title: 'Limited Drops', desc: 'Exclusive pieces, never mass-produced' },
+  { icon: Heart, title: 'Made with Love', desc: 'Celebrating South Asian textile heritage' },
 ];
 
 const AboutSection = () => (
-  <section id="about" className="py-20 bg-blush-gradient">
-    <div className="container mx-auto px-4">
-      <div className="max-w-3xl mx-auto text-center mb-12">
-        <p className="font-body text-gold text-sm tracking-[0.3em] uppercase mb-2">Our Story</p>
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">About Thozhi</h2>
-        <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed">
-          Thozhi — meaning "friend" — brings premium women's ethnic wear from Sri Lanka and India to London. 
-          We curate limited, handpicked collections that celebrate elegance, cultural beauty, and the finest 
-          craftsmanship of South Asian textile traditions. Every piece tells a story of heritage and artistry.
-        </p>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {features.map(f => (
-          <div key={f.title} className="text-center p-6 bg-card rounded-2xl card-product">
-            <div className="w-12 h-12 mx-auto mb-4 bg-secondary rounded-full flex items-center justify-center">
-              <f.icon className="w-6 h-6 text-primary" />
-            </div>
-            <h3 className="font-display text-base font-semibold text-foreground mb-1">{f.title}</h3>
-            <p className="font-body text-sm text-muted-foreground">{f.desc}</p>
+  <section id="about" className="py-24 bg-blush-gradient relative overflow-hidden">
+    {/* Decorative circle */}
+    <div className="absolute -right-32 -top-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
+    <div className="absolute -left-32 -bottom-32 w-96 h-96 rounded-full bg-accent/5 blur-3xl" />
+
+    <div className="container mx-auto px-4 relative">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        {/* Text side */}
+        <div>
+          <div className="inline-block px-3 py-1 rounded-full bg-primary/10 mb-4">
+            <p className="font-body text-xs font-medium text-primary tracking-[0.2em] uppercase">Our Story</p>
           </div>
-        ))}
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6" style={{ lineHeight: 1.3 }}>
+            Where tradition meets <span className="text-gradient-hero italic">modern elegance</span>
+          </h2>
+          <p className="font-body text-base text-muted-foreground leading-relaxed mb-4">
+            Thozhi — meaning <em>"friend"</em> in Tamil — is your companion in discovering the most beautiful ethnic wear from South Asia. We curate limited, handpicked collections from the finest weavers and artisans of Sri Lanka and India.
+          </p>
+          <p className="font-body text-base text-muted-foreground leading-relaxed mb-8">
+            Every piece we bring to London tells a story — of heritage, of craftsmanship, and of the women who wear them with grace. We believe in quality over quantity, elegance over excess, and celebrating cultural beauty in everyday fashion.
+          </p>
+          <div className="flex items-center gap-4">
+            <div className="h-px flex-1 bg-border" />
+            <span className="font-body text-xs text-muted-foreground tracking-[0.3em] uppercase">Est. 2026 · London</span>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+        </div>
+
+        {/* Feature cards */}
+        <div className="grid grid-cols-2 gap-4">
+          {features.map((f, i) => (
+            <div
+              key={f.title}
+              className={`p-6 bg-card rounded-2xl card-product text-center ${i % 2 === 1 ? 'mt-6' : ''}`}
+            >
+              <div className="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-xl flex items-center justify-center">
+                <f.icon className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-display text-sm font-bold text-foreground mb-1">{f.title}</h3>
+              <p className="font-body text-xs text-muted-foreground leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
