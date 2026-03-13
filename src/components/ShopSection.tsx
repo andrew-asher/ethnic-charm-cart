@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { products, Category, Product } from '@/data/products';
 import ProductCard from './ProductCard';
 import ProductDetailModal from './ProductDetailModal';
