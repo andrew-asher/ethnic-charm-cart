@@ -1,47 +1,56 @@
-import { useState, useEffect } from 'react';
-import { products, Category, Product } from '@/data/products';
+import { useState, useEffect, useMemo } from 'react';
+import { useAdmin } from '@/context/AdminContext';
+import { Product } from '@/data/products';
 import ProductCard from './ProductCard';
 import ProductDetailModal from './ProductDetailModal';
 import { Search } from 'lucide-react';
-
-const tabs: ('All' | Category)[] = ['All', 'Tops', 'Sarees', 'Gowns'];
 
 interface Props {
   initialCategory?: string;
 }
 
 const ShopSection = ({ initialCategory }: Props) => {
-  const [active, setActive] = useState<'All' | Category>((initialCategory as Category) || 'All');
+  const { products, categories } = useAdmin();
+  const visibleProducts = useMemo(() => products.filter(p => p.visible), [products]);
+  const categoryNames = useMemo(() => ['All', ...categories.filter(c => c.visible).sort((a, b) => a.order - b.order).map(c => c.name)], [categories]);
+
+  const [active, setActive] = useState(initialCategory || 'All');
+  const [activeSub, setActiveSub] = useState<string>('All');
   const [search, setSearch] = useState('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   useEffect(() => {
     if (initialCategory && initialCategory !== 'All') {
-      setActive(initialCategory as Category);
+      setActive(initialCategory);
+      setActiveSub('All');
     }
   }, [initialCategory]);
 
-  const filtered = products.filter(p => {
+  const activeCategory = categories.find(c => c.name === active);
+  const subcategories = activeCategory?.subcategories || [];
+
+  const filtered = visibleProducts.filter(p => {
     const matchCat = active === 'All' || p.category === active;
+    const matchSub = activeSub === 'All' || (p as any).subcategory === activeSub;
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase()) || p.category.toLowerCase().includes(search.toLowerCase());
-    return matchCat && matchSearch;
+    return matchCat && matchSub && matchSearch;
   });
 
   return (
     <section id="shop" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <p className="font-body text-gold text-sm tracking-[0.3em] uppercase mb-2">Explore</p>
+          <p className="font-body text-primary text-sm tracking-[0.3em] uppercase mb-2">Explore</p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Our Products</h2>
         </div>
 
-        {/* Search & Tabs */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+        {/* Search & Category Tabs */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
           <div className="flex gap-2 flex-wrap justify-center">
-            {tabs.map(tab => (
+            {categoryNames.map(tab => (
               <button
                 key={tab}
-                onClick={() => setActive(tab)}
+                onClick={() => { setActive(tab); setActiveSub('All'); }}
                 className={`px-5 py-2 rounded-full font-body text-sm font-medium transition-colors ${
                   active === tab
                     ? 'bg-primary text-primary-foreground'
@@ -64,10 +73,35 @@ const ShopSection = ({ initialCategory }: Props) => {
           </div>
         </div>
 
+        {/* Subcategory pills */}
+        {active !== 'All' && subcategories.length > 0 && (
+          <div className="flex gap-2 flex-wrap justify-center mb-8">
+            <button
+              onClick={() => setActiveSub('All')}
+              className={`px-4 py-1.5 rounded-full font-body text-xs font-medium transition-colors border ${
+                activeSub === 'All' ? 'border-primary bg-primary/10 text-primary' : 'border-border text-muted-foreground hover:border-primary/50'
+              }`}
+            >
+              All {active}
+            </button>
+            {subcategories.sort((a, b) => a.order - b.order).map(sub => (
+              <button
+                key={sub.id}
+                onClick={() => setActiveSub(sub.name)}
+                className={`px-4 py-1.5 rounded-full font-body text-xs font-medium transition-colors border ${
+                  activeSub === sub.name ? 'border-primary bg-primary/10 text-primary' : 'border-border text-muted-foreground hover:border-primary/50'
+                }`}
+              >
+                {sub.name}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filtered.map(product => (
-            <ProductCard key={product.id} product={product} onQuickView={setSelectedProduct} />
+            <ProductCard key={product.id} product={product as Product} onQuickView={setSelectedProduct} />
           ))}
         </div>
 
