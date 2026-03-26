@@ -38,9 +38,9 @@ const CategorySection = ({ onCategoryClick }: Props) => {
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
                   <h3 className="font-display text-2xl font-bold text-primary-foreground mb-1">{cat.name}</h3>
                   <p className="font-body text-sm text-primary-foreground/80 mb-2">{cat.description}</p>
-                  {cat.subcategories.length > 0 && (
+                  {(cat.subcategories || []).length > 0 && (
                     <div className="flex flex-wrap gap-1.5">
-                      {cat.subcategories.map(sub => (
+                      {(cat.subcategories || []).map(sub => (
                         <span key={sub.id} className="text-[11px] bg-primary-foreground/20 backdrop-blur-sm text-primary-foreground px-2 py-0.5 rounded-full">
                           {sub.name}
                         </span>
