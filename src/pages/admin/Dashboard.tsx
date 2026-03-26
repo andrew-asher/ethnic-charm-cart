@@ -1,18 +1,18 @@
 import { useAdmin } from '@/context/AdminContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Package, FolderOpen, Layers, Star, AlertTriangle, Sparkles, Plus, Settings, Monitor, MessageSquare } from 'lucide-react';
+import { Package, FolderOpen, Layers, Star, AlertTriangle, Sparkles, Plus, Settings, Monitor, MessageSquare, Gift } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
-  const { products, categories, collections, testimonials } = useAdmin();
+  const { products, categories, collections, testimonials, comboOffers } = useAdmin();
   const navigate = useNavigate();
 
   const stats = [
     { label: 'Total Products', value: products.length, icon: Package, color: 'text-primary' },
     { label: 'Categories', value: categories.length, icon: FolderOpen, color: 'text-accent' },
     { label: 'Collections', value: collections.length, icon: Layers, color: 'text-sage' },
-    { label: 'Featured', value: products.filter(p => p.featured).length, icon: Star, color: 'text-gold' },
+    { label: 'Combos', value: comboOffers.length, icon: Gift, color: 'text-gold' },
     { label: 'Limited Stock', value: products.filter(p => p.isLimitedStock).length, icon: AlertTriangle, color: 'text-rose' },
     { label: 'New Collection', value: products.filter(p => p.isNewCollection).length, icon: Sparkles, color: 'text-primary' },
   ];
@@ -20,8 +20,8 @@ const Dashboard = () => {
   const quickActions = [
     { label: 'Add Product', icon: Plus, onClick: () => navigate('/admin/products') },
     { label: 'Manage Collections', icon: Layers, onClick: () => navigate('/admin/collections') },
+    { label: 'Combo Offers', icon: Gift, onClick: () => navigate('/admin/combos') },
     { label: 'Update Homepage', icon: Monitor, onClick: () => navigate('/admin/homepage') },
-    { label: 'WhatsApp Settings', icon: MessageSquare, onClick: () => navigate('/admin/whatsapp') },
   ];
 
   const categoryBreakdown = categories.map(cat => ({
@@ -33,7 +33,7 @@ const Dashboard = () => {
     <div className="space-y-6">
       <div>
         <h1 className="font-display text-2xl font-bold text-foreground">Dashboard</h1>
-        <p className="text-sm text-muted-foreground mt-1">Welcome back to Thozhi Admin</p>
+        <p className="text-sm text-muted-foreground mt-1">Welcome back to Thozhy Admin</p>
       </div>
 
       {/* Stats Grid */}

@@ -3,7 +3,7 @@ import { useAdmin } from '@/context/AdminContext';
 import { useState } from 'react';
 import {
   LayoutDashboard, Package, FolderOpen, Layers, Monitor, MessageSquare,
-  Star, FileText, Settings, LogOut, Menu, X, ChevronLeft
+  Star, FileText, Settings, LogOut, Menu, X, ChevronLeft, Gift
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -13,6 +13,7 @@ const navItems = [
   { to: '/admin/products', icon: Package, label: 'Products' },
   { to: '/admin/categories', icon: FolderOpen, label: 'Categories' },
   { to: '/admin/collections', icon: Layers, label: 'Collections' },
+  { to: '/admin/combos', icon: Gift, label: 'Combo Offers' },
   { to: '/admin/homepage', icon: Monitor, label: 'Homepage' },
   { to: '/admin/testimonials', icon: Star, label: 'Testimonials' },
   { to: '/admin/whatsapp', icon: MessageSquare, label: 'WhatsApp' },
