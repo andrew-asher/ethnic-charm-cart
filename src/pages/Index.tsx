@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import CategorySection from '@/components/CategorySection';
+import FeaturedCollections from '@/components/FeaturedCollections';
 import ShopSection from '@/components/ShopSection';
 import AboutSection from '@/components/AboutSection';
 import TestimonialSection from '@/components/TestimonialSection';
@@ -23,6 +24,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
+      <FeaturedCollections />
       <CategorySection onCategoryClick={handleCategoryClick} />
       <ShopSection initialCategory={selectedCategory} />
       <AboutSection />
