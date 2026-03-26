@@ -17,7 +17,7 @@ const Categories = () => {
   const [deleteId, setDeleteId] = useState<string | null>(null);
 
   const openNew = () => {
-    setEditing({ id: `cat-${Date.now()}`, name: '', description: '', image: '', order: categories.length + 1, visible: true });
+    setEditing({ id: `cat-${Date.now()}`, name: '', description: '', image: '', order: categories.length + 1, visible: true, subcategories: [] });
     setIsNew(true);
   };
 

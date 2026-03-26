@@ -117,9 +117,9 @@ interface AdminContextType {
 const ADMIN_PASSWORD = 'thozhi2026';
 
 const defaultCategories: AdminCategory[] = [
-  { id: 'cat-tops', name: 'Tops', description: 'Elegant kurti tops and tunics', image: '', order: 1, visible: true },
-  { id: 'cat-sarees', name: 'Sarees', description: 'Traditional silk and designer sarees', image: '', order: 2, visible: true },
-  { id: 'cat-gowns', name: 'Gowns', description: 'Floor-length anarkali gowns', image: '', order: 3, visible: true },
+  { id: 'cat-tops', name: 'Tops', description: 'Elegant kurti tops and tunics', image: '', order: 1, visible: true, subcategories: [{ id: 'sub-casual', name: 'Casual Wear', order: 1 }, { id: 'sub-party', name: 'Party Wear', order: 2 }, { id: 'sub-office', name: 'Office Wear', order: 3 }] },
+  { id: 'cat-sarees', name: 'Sarees', description: 'Traditional silk and designer sarees', image: '', order: 2, visible: true, subcategories: [{ id: 'sub-wedding', name: 'Wedding Collection', order: 1 }, { id: 'sub-party-saree', name: 'Party Wear', order: 2 }, { id: 'sub-casual-saree', name: 'Casual Wear', order: 3 }, { id: 'sub-silk', name: 'Pure Silk', order: 4 }] },
+  { id: 'cat-gowns', name: 'Gowns', description: 'Floor-length anarkali gowns', image: '', order: 3, visible: true, subcategories: [{ id: 'sub-anarkali', name: 'Anarkali', order: 1 }, { id: 'sub-festive', name: 'Festive Gowns', order: 2 }, { id: 'sub-bridal', name: 'Bridal', order: 3 }] },
 ];
 
 const defaultCollections: AdminCollection[] = [
