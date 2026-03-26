@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import CategorySection from '@/components/CategorySection';
 import FeaturedCollections from '@/components/FeaturedCollections';
+import ComboOffersSection from '@/components/ComboOffersSection';
 import ShopSection from '@/components/ShopSection';
 import AboutSection from '@/components/AboutSection';
 import TestimonialSection from '@/components/TestimonialSection';
@@ -26,6 +27,7 @@ const Index = () => {
       <HeroSection />
       <FeaturedCollections />
       <CategorySection onCategoryClick={handleCategoryClick} />
+      <ComboOffersSection />
       <ShopSection initialCategory={selectedCategory} />
       <AboutSection />
       <TestimonialSection />

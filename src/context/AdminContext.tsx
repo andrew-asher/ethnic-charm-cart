@@ -41,6 +41,19 @@ export interface AdminCollection {
   visible: boolean;
 }
 
+export interface ComboOffer {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  productIds: string[];
+  originalPrice: number;
+  comboPrice: number;
+  badge: string;
+  featured: boolean;
+  visible: boolean;
+}
+
 export interface HeroSettings {
   backgroundImage: string;
   title: string;
@@ -99,6 +112,11 @@ interface AdminContextType {
   updateCollection: (id: string, collection: Partial<AdminCollection>) => void;
   deleteCollection: (id: string) => void;
 
+  comboOffers: ComboOffer[];
+  addComboOffer: (combo: ComboOffer) => void;
+  updateComboOffer: (id: string, combo: Partial<ComboOffer>) => void;
+  deleteComboOffer: (id: string) => void;
+
   heroSettings: HeroSettings;
   updateHeroSettings: (settings: Partial<HeroSettings>) => void;
 
@@ -120,6 +138,7 @@ const defaultCategories: AdminCategory[] = [
   { id: 'cat-tops', name: 'Tops', description: 'Elegant kurti tops and tunics', image: '', order: 1, visible: true, subcategories: [{ id: 'sub-casual', name: 'Casual Wear', order: 1 }, { id: 'sub-party', name: 'Party Wear', order: 2 }, { id: 'sub-office', name: 'Office Wear', order: 3 }] },
   { id: 'cat-sarees', name: 'Sarees', description: 'Traditional silk and designer sarees', image: '', order: 2, visible: true, subcategories: [{ id: 'sub-wedding', name: 'Wedding Collection', order: 1 }, { id: 'sub-party-saree', name: 'Party Wear', order: 2 }, { id: 'sub-casual-saree', name: 'Casual Wear', order: 3 }, { id: 'sub-silk', name: 'Pure Silk', order: 4 }] },
   { id: 'cat-gowns', name: 'Gowns', description: 'Floor-length anarkali gowns', image: '', order: 3, visible: true, subcategories: [{ id: 'sub-anarkali', name: 'Anarkali', order: 1 }, { id: 'sub-festive', name: 'Festive Gowns', order: 2 }, { id: 'sub-bridal', name: 'Bridal', order: 3 }] },
+  { id: 'cat-jewellery', name: 'Premium Imitation Jewellery', description: 'Elegant ethnic jewellery pieces', image: '', order: 4, visible: true, subcategories: [{ id: 'sub-jimmikis', name: 'Jimmikis', order: 1 }, { id: 'sub-chains', name: 'Chains', order: 2 }, { id: 'sub-nose-pins', name: 'Nose Pins', order: 3 }, { id: 'sub-ear-pieces', name: 'Ear Pieces', order: 4 }] },
 ];
 
 const defaultCollections: AdminCollection[] = [
@@ -153,15 +172,17 @@ const defaultTestimonials: Testimonial[] = [
 
 const defaultSiteContent: SiteContent = {
   aboutTitle: 'Our Story',
-  aboutText: 'Thozhi brings premium women\'s ethnic wear from Sri Lanka and India to London.',
+  aboutText: 'Thozhy is a women\'s ethnic fashion brand with Eelam roots, growing across Sri Lanka and London. We offer a carefully curated selection of South Asian ethnic wear, combining our own Thozhy designs with handpicked pieces sourced from trusted artisans and collections.\n\nOur style reflects elegance, simplicity, and cultural beauty—blending aesthetic, modern looks with traditional craftsmanship. Every piece is chosen with intention, focusing on quality, detail, and a refined feminine appeal.\n\nThozhy represents more than fashion—it is a journey of heritage, identity, and timeless style, brought together with a minimalist yet premium touch.',
   tagline: 'Premium South Asian Ethnic Wear for Women',
-  subtext: 'Carefully selected tops, sarees, and gowns from Sri Lanka and India',
+  subtext: 'Carefully curated ethnic wear and jewellery from Sri Lanka and India',
   deliveryNote: 'Free delivery across London for orders over £100',
   pickupNote: 'Pickup available in Central London',
-  instagramLink: 'https://instagram.com/thozhi.london',
-  footerText: '© 2026 Thozhi London. All rights reserved.',
+  instagramLink: 'https://instagram.com/thozhy.london',
+  footerText: '© 2026 Thozhy London. All rights reserved.',
   contactLocation: 'London, United Kingdom',
 };
+
+const defaultComboOffers: ComboOffer[] = [];
 
 function convertToAdmin(p: Product): AdminProduct {
   return {
@@ -191,6 +212,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [products, setProducts] = useState<AdminProduct[]>(() => loadFromStorage('admin_products', defaultProducts.map(convertToAdmin)));
   const [categories, setCategories] = useState<AdminCategory[]>(() => loadFromStorage('admin_categories', defaultCategories));
   const [collections, setCollections] = useState<AdminCollection[]>(() => loadFromStorage('admin_collections', defaultCollections));
+  const [comboOffers, setComboOffers] = useState<ComboOffer[]>(() => loadFromStorage('admin_combos', defaultComboOffers));
   const [heroSettings, setHeroSettings] = useState<HeroSettings>(() => loadFromStorage('admin_hero', defaultHero));
   const [whatsAppSettings, setWhatsAppSettings] = useState<WhatsAppSettings>(() => loadFromStorage('admin_whatsapp', defaultWhatsApp));
   const [testimonials, setTestimonials] = useState<Testimonial[]>(() => loadFromStorage('admin_testimonials', defaultTestimonials));
@@ -201,6 +223,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   useEffect(() => { localStorage.setItem('admin_products', JSON.stringify(products)); }, [products]);
   useEffect(() => { localStorage.setItem('admin_categories', JSON.stringify(categories)); }, [categories]);
   useEffect(() => { localStorage.setItem('admin_collections', JSON.stringify(collections)); }, [collections]);
+  useEffect(() => { localStorage.setItem('admin_combos', JSON.stringify(comboOffers)); }, [comboOffers]);
   useEffect(() => { localStorage.setItem('admin_hero', JSON.stringify(heroSettings)); }, [heroSettings]);
   useEffect(() => { localStorage.setItem('admin_whatsapp', JSON.stringify(whatsAppSettings)); }, [whatsAppSettings]);
   useEffect(() => { localStorage.setItem('admin_testimonials', JSON.stringify(testimonials)); }, [testimonials]);
@@ -224,6 +247,10 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const updateCollection = useCallback((id: string, data: Partial<AdminCollection>) => setCollections(prev => prev.map(c => c.id === id ? { ...c, ...data } : c)), []);
   const deleteCollection = useCallback((id: string) => setCollections(prev => prev.filter(c => c.id !== id)), []);
 
+  const addComboOffer = useCallback((c: ComboOffer) => setComboOffers(prev => [...prev, c]), []);
+  const updateComboOffer = useCallback((id: string, data: Partial<ComboOffer>) => setComboOffers(prev => prev.map(c => c.id === id ? { ...c, ...data } : c)), []);
+  const deleteComboOffer = useCallback((id: string) => setComboOffers(prev => prev.filter(c => c.id !== id)), []);
+
   const updateHeroSettings = useCallback((data: Partial<HeroSettings>) => setHeroSettings(prev => ({ ...prev, ...data })), []);
   const updateWhatsAppSettings = useCallback((data: Partial<WhatsAppSettings>) => setWhatsAppSettings(prev => ({ ...prev, ...data })), []);
 
@@ -239,6 +266,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       products, addProduct, updateProduct, deleteProduct,
       categories, addCategory, updateCategory, deleteCategory,
       collections, addCollection, updateCollection, deleteCollection,
+      comboOffers, addComboOffer, updateComboOffer, deleteComboOffer,
       heroSettings, updateHeroSettings,
       whatsAppSettings, updateWhatsAppSettings,
       testimonials, addTestimonial, updateTestimonial, deleteTestimonial,

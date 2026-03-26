@@ -3,7 +3,7 @@ import { useAdmin } from '@/context/AdminContext';
 import { useState } from 'react';
 import {
   LayoutDashboard, Package, FolderOpen, Layers, Monitor, MessageSquare,
-  Star, FileText, Settings, LogOut, Menu, X, ChevronLeft
+  Star, FileText, Settings, LogOut, Menu, X, ChevronLeft, Gift
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -13,6 +13,7 @@ const navItems = [
   { to: '/admin/products', icon: Package, label: 'Products' },
   { to: '/admin/categories', icon: FolderOpen, label: 'Categories' },
   { to: '/admin/collections', icon: Layers, label: 'Collections' },
+  { to: '/admin/combos', icon: Gift, label: 'Combo Offers' },
   { to: '/admin/homepage', icon: Monitor, label: 'Homepage' },
   { to: '/admin/testimonials', icon: Star, label: 'Testimonials' },
   { to: '/admin/whatsapp', icon: MessageSquare, label: 'WhatsApp' },
@@ -39,7 +40,7 @@ const AdminLayout = () => {
       )}>
         {/* Brand */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-border">
-          {sidebarOpen && <span className="text-gradient-hero font-display text-lg font-bold">thozhi</span>}
+          {sidebarOpen && <span className="text-gradient-hero font-display text-lg font-bold">thozhy</span>}
           <Button variant="ghost" size="icon" className="hidden lg:flex" onClick={() => setSidebarOpen(!sidebarOpen)}>
             <ChevronLeft className={cn("w-4 h-4 transition-transform", !sidebarOpen && "rotate-180")} />
           </Button>

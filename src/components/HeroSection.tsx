@@ -20,13 +20,13 @@ const HeroSection = () => {
             </p>
           </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-3 animate-fade-in-up" style={{ lineHeight: 1.1 }}>
-            <span className="text-gradient-hero">Thozhi</span>
+            <span className="text-gradient-hero">Thozhy</span>
           </h1>
           <p className="font-body text-lg md:text-xl font-light text-primary-foreground/90 mb-2 animate-fade-in-up-delay-1 tracking-wide">
             Premium South Asian Ethnic Wear for Women
           </p>
           <p className="font-body text-sm md:text-base text-primary-foreground/60 mb-10 animate-fade-in-up-delay-2 max-w-md leading-relaxed">
-            Carefully selected tops, sarees, and gowns from Sri Lanka and India — delivered with love in London.
+            Carefully curated ethnic wear and jewellery from Sri Lanka and India — delivered with love in London.
           </p>
           <div className="flex flex-wrap gap-4 animate-fade-in-up-delay-3">
             <button

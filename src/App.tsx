@@ -13,6 +13,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import Products from "./pages/admin/Products";
 import Categories from "./pages/admin/Categories";
 import Collections from "./pages/admin/Collections";
+import ComboOffers from "./pages/admin/ComboOffers";
 import Homepage from "./pages/admin/Homepage";
 import Testimonials from "./pages/admin/Testimonials";
 import WhatsAppSettingsPage from "./pages/admin/WhatsAppSettingsPage";
@@ -41,6 +42,7 @@ const App = () => (
                 <Route path="products" element={<Products />} />
                 <Route path="categories" element={<Categories />} />
                 <Route path="collections" element={<Collections />} />
+                <Route path="combos" element={<ComboOffers />} />
                 <Route path="homepage" element={<Homepage />} />
                 <Route path="testimonials" element={<Testimonials />} />
                 <Route path="whatsapp" element={<WhatsAppSettingsPage />} />
