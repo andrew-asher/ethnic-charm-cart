@@ -11,7 +11,7 @@ import gown2 from '@/assets/products/gown-2.jpg';
 import gown3 from '@/assets/products/gown-3.jpg';
 import gown4 from '@/assets/products/gown-4.jpg';
 
-export type Category = 'Tops' | 'Sarees' | 'Gowns';
+export type Category = 'Tops' | 'Sarees' | 'Gowns' | 'Premium Imitation Jewellery';
 
 export type Subcategory = string;
 

@@ -40,7 +40,7 @@ const AdminLayout = () => {
       )}>
         {/* Brand */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-border">
-          {sidebarOpen && <span className="text-gradient-hero font-display text-lg font-bold">thozhi</span>}
+          {sidebarOpen && <span className="text-gradient-hero font-display text-lg font-bold">thozhy</span>}
           <Button variant="ghost" size="icon" className="hidden lg:flex" onClick={() => setSidebarOpen(!sidebarOpen)}>
             <ChevronLeft className={cn("w-4 h-4 transition-transform", !sidebarOpen && "rotate-180")} />
           </Button>
