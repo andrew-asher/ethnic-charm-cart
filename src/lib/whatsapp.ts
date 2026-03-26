@@ -18,6 +18,6 @@ export function generateProductWhatsAppLink(product: Product, size: string): str
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-export function getWhatsAppLink(): string {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello Thozhi, I am interested in your collection!')}`;
+export function getWhatsAppLink(message?: string): string {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message || 'Hello Thozhi, I am interested in your collection!')}`;
 }

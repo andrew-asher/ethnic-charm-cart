@@ -247,6 +247,10 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const updateCollection = useCallback((id: string, data: Partial<AdminCollection>) => setCollections(prev => prev.map(c => c.id === id ? { ...c, ...data } : c)), []);
   const deleteCollection = useCallback((id: string) => setCollections(prev => prev.filter(c => c.id !== id)), []);
 
+  const addComboOffer = useCallback((c: ComboOffer) => setComboOffers(prev => [...prev, c]), []);
+  const updateComboOffer = useCallback((id: string, data: Partial<ComboOffer>) => setComboOffers(prev => prev.map(c => c.id === id ? { ...c, ...data } : c)), []);
+  const deleteComboOffer = useCallback((id: string) => setComboOffers(prev => prev.filter(c => c.id !== id)), []);
+
   const updateHeroSettings = useCallback((data: Partial<HeroSettings>) => setHeroSettings(prev => ({ ...prev, ...data })), []);
   const updateWhatsAppSettings = useCallback((data: Partial<WhatsAppSettings>) => setWhatsAppSettings(prev => ({ ...prev, ...data })), []);
 
