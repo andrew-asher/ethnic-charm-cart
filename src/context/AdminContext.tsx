@@ -14,6 +14,12 @@ export interface AdminProduct extends Omit<Product, 'badge'> {
   badge?: 'New Collection' | 'Limited Stock';
 }
 
+export interface AdminSubcategory {
+  id: string;
+  name: string;
+  order: number;
+}
+
 export interface AdminCategory {
   id: string;
   name: string;
@@ -21,6 +27,7 @@ export interface AdminCategory {
   image: string;
   order: number;
   visible: boolean;
+  subcategories: AdminSubcategory[];
 }
 
 export interface AdminCollection {

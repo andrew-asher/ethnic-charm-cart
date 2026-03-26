@@ -13,12 +13,15 @@ import gown4 from '@/assets/products/gown-4.jpg';
 
 export type Category = 'Tops' | 'Sarees' | 'Gowns';
 
+export type Subcategory = string;
+
 export interface Product {
   id: string;
   name: string;
   subtitle: string;
   price: number;
   category: Category;
+  subcategory?: Subcategory;
   image: string;
   images: string[];
   description: string;
