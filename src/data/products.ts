@@ -10,6 +10,10 @@ import gown1 from '@/assets/products/gown-1.jpg';
 import gown2 from '@/assets/products/gown-2.jpg';
 import gown3 from '@/assets/products/gown-3.jpg';
 import gown4 from '@/assets/products/gown-4.jpg';
+import jimmiki1 from '@/assets/products/jimmiki-1.jpg';
+import chain1 from '@/assets/products/chain-1.jpg';
+import nosepin1 from '@/assets/products/nosepin-1.jpg';
+import earpiece1 from '@/assets/products/earpiece-1.jpg';
 
 export type Category = 'Tops' | 'Sarees' | 'Gowns' | 'Premium Imitation Jewellery';
 
@@ -198,6 +202,66 @@ export const products: Product[] = [
     qualityNote: 'Premium velvet with gold zardozi embroidery, fully lined.',
     sizes: ['S', 'M', 'L', 'XL'],
     colors: ['Maroon'],
+    badge: 'New Collection',
+  },
+  // Premium Imitation Jewellery
+  {
+    id: 'jewel-1',
+    name: 'Temple Jimmiki Earrings',
+    subtitle: 'Traditional Gold-Finish Jimmikis',
+    price: 18,
+    category: 'Premium Imitation Jewellery',
+    subcategory: 'Jimmikis',
+    image: jimmiki1,
+    images: [jimmiki1],
+    description: 'Exquisite temple-style jimmiki earrings with intricate filigree work and dangling bell details. A timeless South Indian design crafted in premium gold-finish alloy.',
+    qualityNote: 'High-grade alloy with matte gold plating, hypoallergenic posts.',
+    sizes: ['Free Size'],
+    colors: ['Gold'],
+    badge: 'New Collection',
+  },
+  {
+    id: 'jewel-2',
+    name: 'Heritage Temple Chain',
+    subtitle: 'Gold-Plated Pendant Necklace',
+    price: 28,
+    category: 'Premium Imitation Jewellery',
+    subcategory: 'Chains',
+    image: chain1,
+    images: [chain1],
+    description: 'A stunning gold-plated chain necklace featuring a traditional crescent pendant with fine granulation details. Perfect for festive and bridal styling.',
+    qualityNote: 'Premium brass with 22K gold micro-plating, tarnish-resistant.',
+    sizes: ['Free Size'],
+    colors: ['Gold'],
+    badge: 'Limited Stock',
+  },
+  {
+    id: 'jewel-3',
+    name: 'Classic Stone Nose Pin',
+    subtitle: 'Delicate Gold-Finish Stud',
+    price: 8,
+    category: 'Premium Imitation Jewellery',
+    subcategory: 'Nose Pins',
+    image: nosepin1,
+    images: [nosepin1],
+    description: 'A dainty nose pin with a sparkling CZ stone set in a gold-finish bezel. Minimalist yet elegant — perfect for everyday or occasion wear.',
+    qualityNote: 'Surgical steel post with gold plating, CZ stone setting.',
+    sizes: ['Free Size'],
+    colors: ['Gold'],
+  },
+  {
+    id: 'jewel-4',
+    name: 'Royal Ear Piece Set',
+    subtitle: 'Ornate Gold-Finish Ear Cuffs',
+    price: 22,
+    category: 'Premium Imitation Jewellery',
+    subcategory: 'Ear Pieces',
+    image: earpiece1,
+    images: [earpiece1],
+    description: 'A statement set of ornate ear pieces featuring ruby-toned stones and pearl-finish beading. Inspired by South Indian bridal jewellery traditions.',
+    qualityNote: 'Premium alloy with antique gold finish, stone and pearl detailing.',
+    sizes: ['Free Size'],
+    colors: ['Gold', 'Ruby Gold'],
     badge: 'New Collection',
   },
 ];
