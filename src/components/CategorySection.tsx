@@ -2,11 +2,13 @@ import { useAdmin } from '@/context/AdminContext';
 import categoryTops from '@/assets/category-tops.jpg';
 import categorySarees from '@/assets/category-sarees.jpg';
 import categoryGowns from '@/assets/category-gowns.jpg';
+import categoryJewellery from '@/assets/category-jewellery.jpg';
 
 const fallbackImages: Record<string, string> = {
   Tops: categoryTops,
   Sarees: categorySarees,
   Gowns: categoryGowns,
+  'Premium Imitation Jewellery': categoryJewellery,
 };
 
 interface Props {
