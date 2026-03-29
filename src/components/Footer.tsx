@@ -1,7 +1,12 @@
+import thozhyLogo from '@/assets/thozhy-logo.jpeg';
+
 const Footer = () => (
   <footer className="py-12 bg-warm-brown">
     <div className="container mx-auto px-4 text-center">
-      <h3 className="text-gradient-hero font-display text-2xl font-bold mb-2">thozhy</h3>
+      <div className="flex items-center justify-center gap-3 mb-2">
+        <img src={thozhyLogo} alt="Thozhy" className="h-10 w-10 rounded-full object-cover" />
+        <h3 className="text-gradient-hero font-display text-2xl font-bold">Thozhy</h3>
+      </div>
       <p className="font-body text-sm text-primary-foreground/50 mb-6">
         Premium South Asian Ethnic Wear & Jewellery — London, UK
       </p>

@@ -1,6 +1,7 @@
 import { ShoppingBag, Menu, X } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useState } from 'react';
+import thozhyLogo from '@/assets/thozhy-logo.jpeg';
 
 const Navbar = () => {
   const { totalItems, setIsCartOpen } = useCart();
@@ -15,8 +16,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-lg border-b border-border/50">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <button onClick={() => scrollTo('hero')} className="flex items-center gap-2">
-          <span className="text-gradient-hero font-display text-2xl font-bold tracking-wide">thozhi</span>
-          <span className="text-[10px] font-body font-medium text-muted-foreground tracking-[0.2em] uppercase hidden sm:block">london</span>
+          <img src={thozhyLogo} alt="Thozhy" className="h-10 w-10 rounded-full object-cover" />
+          <span className="text-gradient-hero font-display text-xl font-bold tracking-wide">Thozhy</span>
         </button>
 
         {/* Desktop nav */}
