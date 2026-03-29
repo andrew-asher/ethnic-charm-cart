@@ -211,6 +211,22 @@ function loadFromStorage<T>(key: string, fallback: T): T {
         return { ...fallback, ...sc, aboutText: (fallback as Record<string, unknown>).aboutText } as T;
       }
     }
+    // Force-migrate products to include jewellery if missing
+    if (key === 'admin_products' && Array.isArray(parsed)) {
+      const hasJewellery = parsed.some((p: { category?: string }) => p.category === 'Premium Imitation Jewellery');
+      if (!hasJewellery) {
+        const jewelleryDefaults = (fallback as unknown[]).filter((p: any) => p.category === 'Premium Imitation Jewellery');
+        return [...parsed, ...jewelleryDefaults] as unknown as T;
+      }
+    }
+    // Force-migrate categories to include jewellery if missing
+    if (key === 'admin_categories' && Array.isArray(parsed)) {
+      const hasJewellery = parsed.some((c: { name?: string }) => c.name === 'Premium Imitation Jewellery');
+      if (!hasJewellery) {
+        const jewelleryCategory = (fallback as unknown[]).find((c: any) => c.name === 'Premium Imitation Jewellery');
+        if (jewelleryCategory) return [...parsed, jewelleryCategory] as unknown as T;
+      }
+    }
     return parsed;
   } catch { return fallback; }
 }
