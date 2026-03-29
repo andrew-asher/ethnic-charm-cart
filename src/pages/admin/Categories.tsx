@@ -23,7 +23,7 @@ const Categories = () => {
     setIsNew(true);
   };
 
-  const openEdit = (c: AdminCategory) => { setEditing({ ...c, subcategories: [...c.subcategories] }); setIsNew(false); };
+  const openEdit = (c: AdminCategory) => { setEditing({ ...c, subcategories: [...(c.subcategories || [])] }); setIsNew(false); };
 
   const handleSave = () => {
     if (!editing || !editing.name.trim()) { toast.error('Category name is required'); return; }
@@ -45,14 +45,14 @@ const Categories = () => {
 
   const addSubcategory = () => {
     if (!editing || !newSubName.trim()) return;
-    const sub: AdminSubcategory = { id: `sub-${Date.now()}`, name: newSubName.trim(), order: editing.subcategories.length + 1 };
-    setEditing({ ...editing, subcategories: [...editing.subcategories, sub] });
+    const sub: AdminSubcategory = { id: `sub-${Date.now()}`, name: newSubName.trim(), order: (editing.subcategories || []).length + 1 };
+    setEditing({ ...editing, subcategories: [...(editing.subcategories || []), sub] });
     setNewSubName('');
   };
 
   const removeSubcategory = (subId: string) => {
     if (!editing) return;
-    setEditing({ ...editing, subcategories: editing.subcategories.filter(s => s.id !== subId) });
+    setEditing({ ...editing, subcategories: (editing.subcategories || []).filter(s => s.id !== subId) });
   };
 
   const sorted = [...categories].sort((a, b) => a.order - b.order);
@@ -85,10 +85,10 @@ const Categories = () => {
                   <p className="text-sm text-muted-foreground">{cat.description || 'No description'}</p>
                   <div className="flex items-center gap-2 mt-1 flex-wrap">
                     <span className="text-xs text-muted-foreground">{count} products</span>
-                    {cat.subcategories.length > 0 && (
+                    {(cat.subcategories || []).length > 0 && (
                       <>
                         <span className="text-xs text-muted-foreground">•</span>
-                        {cat.subcategories.map(sub => (
+                        {(cat.subcategories || []).map(sub => (
                           <Badge key={sub.id} variant="secondary" className="text-[10px] px-1.5 py-0">{sub.name}</Badge>
                         ))}
                       </>
@@ -120,13 +120,13 @@ const Categories = () => {
               </div>
               {/* Subcategories */}
               <div className="space-y-3">
-                <Label>Subcategories ({editing.subcategories.length})</Label>
+                <Label>Subcategories ({(editing.subcategories || []).length})</Label>
                 <div className="flex gap-2">
                   <Input value={newSubName} onChange={e => setNewSubName(e.target.value)} placeholder="e.g. Wedding Collection" onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), addSubcategory())} />
                   <Button type="button" size="sm" onClick={addSubcategory} disabled={!newSubName.trim()}><Plus className="w-4 h-4" /></Button>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {editing.subcategories.map(sub => (
+                  {(editing.subcategories || []).map(sub => (
                     <Badge key={sub.id} variant="outline" className="gap-1 pr-1">
                       {sub.name}
                       <button onClick={() => removeSubcategory(sub.id)} className="ml-1 hover:text-destructive"><X className="w-3 h-3" /></button>
