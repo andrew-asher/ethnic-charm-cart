@@ -201,7 +201,17 @@ function convertToAdmin(p: Product): AdminProduct {
 function loadFromStorage<T>(key: string, fallback: T): T {
   try {
     const stored = localStorage.getItem(key);
-    return stored ? JSON.parse(stored) : fallback;
+    if (!stored) return fallback;
+    const parsed = JSON.parse(stored);
+    // Force-migrate stale site content to new defaults
+    if (key === 'admin_site_content' && typeof parsed === 'object' && parsed !== null) {
+      const sc = parsed as Record<string, unknown>;
+      const aboutText = sc.aboutText as string | undefined;
+      if (!aboutText || !aboutText.includes('Eelam roots')) {
+        return { ...fallback, ...sc, aboutText: (fallback as Record<string, unknown>).aboutText } as T;
+      }
+    }
+    return parsed;
   } catch { return fallback; }
 }
 
