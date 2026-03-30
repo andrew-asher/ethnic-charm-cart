@@ -55,12 +55,20 @@ export interface ComboOffer {
   visible: boolean;
 }
 
+export interface HeroSlide {
+  id: string;
+  imageUrl: string;
+  order: number;
+  visible: boolean;
+}
+
 export interface HeroSettings {
   backgroundImage: string;
   title: string;
   subtitle: string;
   ctaText: string;
   secondaryCtaText: string;
+  slides: HeroSlide[];
 }
 
 export interface WhatsAppSettings {
