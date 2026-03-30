@@ -160,6 +160,7 @@ const defaultHero: HeroSettings = {
   subtitle: 'Premium South Asian Ethnic Wear for Women',
   ctaText: 'Shop Now',
   secondaryCtaText: 'Order via WhatsApp',
+  slides: [],
 };
 
 const defaultWhatsApp: WhatsAppSettings = {
