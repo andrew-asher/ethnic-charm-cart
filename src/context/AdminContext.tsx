@@ -218,13 +218,16 @@ function loadFromStorage<T>(key: string, fallback: T): T {
         return [...parsed, ...jewelleryDefaults] as unknown as T;
       }
     }
-    // Force-migrate categories to include jewellery if missing
+    // Force-migrate categories to include jewellery if missing, and remove Gowns
     if (key === 'admin_categories' && Array.isArray(parsed)) {
-      const hasJewellery = parsed.some((c: { name?: string }) => c.name === 'Premium Imitation Jewellery');
+      let cats = parsed.filter((c: { name?: string }) => c.name !== 'Gowns');
+      const hasJewellery = cats.some((c: { name?: string }) => c.name === 'Premium Imitation Jewellery');
       if (!hasJewellery) {
         const jewelleryCategory = (fallback as unknown[]).find((c: any) => c.name === 'Premium Imitation Jewellery');
-        if (jewelleryCategory) return [...parsed, jewelleryCategory] as unknown as T;
+        if (jewelleryCategory) cats = [...cats, jewelleryCategory];
       }
+      if (cats.length !== parsed.length) return cats as unknown as T;
+      if (!hasJewellery) return cats as unknown as T;
     }
     return parsed;
   } catch { return fallback; }
