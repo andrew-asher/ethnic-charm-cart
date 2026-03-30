@@ -15,7 +15,7 @@ import chain1 from '@/assets/products/chain-1.jpg';
 import nosepin1 from '@/assets/products/nosepin-1.jpg';
 import earpiece1 from '@/assets/products/earpiece-1.jpg';
 
-export type Category = 'Tops' | 'Sarees' | 'Gowns' | 'Premium Imitation Jewellery';
+export type Category = 'Tops' | 'Sarees' | 'Premium Imitation Jewellery' | string;
 
 export type Subcategory = string;
 
