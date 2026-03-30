@@ -243,7 +243,39 @@ function loadFromStorage<T>(key: string, fallback: T): T {
   } catch { return fallback; }
 }
 
-const AdminContext = createContext<AdminContextType | undefined>(undefined);
+const defaultAdminContext: AdminContextType = {
+  isAuthenticated: false,
+  login: () => false,
+  logout: () => undefined,
+  products: defaultProducts.map(convertToAdmin),
+  addProduct: () => undefined,
+  updateProduct: () => undefined,
+  deleteProduct: () => undefined,
+  categories: defaultCategories,
+  addCategory: () => undefined,
+  updateCategory: () => undefined,
+  deleteCategory: () => undefined,
+  collections: defaultCollections,
+  addCollection: () => undefined,
+  updateCollection: () => undefined,
+  deleteCollection: () => undefined,
+  comboOffers: defaultComboOffers,
+  addComboOffer: () => undefined,
+  updateComboOffer: () => undefined,
+  deleteComboOffer: () => undefined,
+  heroSettings: defaultHero,
+  updateHeroSettings: () => undefined,
+  whatsAppSettings: defaultWhatsApp,
+  updateWhatsAppSettings: () => undefined,
+  testimonials: defaultTestimonials,
+  addTestimonial: () => undefined,
+  updateTestimonial: () => undefined,
+  deleteTestimonial: () => undefined,
+  siteContent: defaultSiteContent,
+  updateSiteContent: () => undefined,
+};
+
+const AdminContext = createContext<AdminContextType>(defaultAdminContext);
 
 export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => loadFromStorage('admin_auth', false));
@@ -256,7 +288,6 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [testimonials, setTestimonials] = useState<Testimonial[]>(() => loadFromStorage('admin_testimonials', defaultTestimonials));
   const [siteContent, setSiteContent] = useState<SiteContent>(() => loadFromStorage('admin_site_content', defaultSiteContent));
 
-  // Persist to localStorage
   useEffect(() => { localStorage.setItem('admin_auth', JSON.stringify(isAuthenticated)); }, [isAuthenticated]);
   useEffect(() => { localStorage.setItem('admin_products', JSON.stringify(products)); }, [products]);
   useEffect(() => { localStorage.setItem('admin_categories', JSON.stringify(categories)); }, [categories]);
@@ -315,8 +346,4 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   );
 };
 
-export const useAdmin = () => {
-  const ctx = useContext(AdminContext);
-  if (!ctx) throw new Error('useAdmin must be used within AdminProvider');
-  return ctx;
-};
+export const useAdmin = () => useContext(AdminContext);
