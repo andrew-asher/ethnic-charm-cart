@@ -18,14 +18,14 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-warm-brown flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-primary/10 flex items-center justify-center">
             <Lock className="w-7 h-7 text-primary" />
           </div>
-          <h1 className="font-display text-2xl font-bold text-gradient-hero">Thozhy Admin</h1>
-          <p className="text-sm text-primary-foreground/50 mt-1">Enter your password to continue</p>
+          <h1 className="font-display text-2xl font-bold text-foreground">Thozhy Admin</h1>
+          <p className="text-sm text-muted-foreground mt-1">Enter your password to continue</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
@@ -33,14 +33,14 @@ const AdminLogin = () => {
             placeholder="Admin password"
             value={password}
             onChange={e => setPassword(e.target.value)}
-            className={`bg-charcoal border-border text-primary-foreground placeholder:text-muted-foreground ${error ? 'border-destructive' : ''}`}
+            className={error ? 'border-destructive' : ''}
             autoFocus
           />
           {error && <p className="text-sm text-destructive">Incorrect password</p>}
-          <Button type="submit" className="w-full bg-primary text-primary-foreground hover:brightness-110">Sign In</Button>
+          <Button type="submit" className="w-full">Sign In</Button>
         </form>
-        <p className="text-xs text-primary-foreground/30 text-center mt-6">
-          Default password: <code className="bg-charcoal px-1.5 py-0.5 rounded text-xs text-primary-foreground/50">thozhi2026</code>
+        <p className="text-xs text-muted-foreground text-center mt-6">
+          Default password: <code className="bg-muted px-1.5 py-0.5 rounded text-xs">thozhi2026</code>
         </p>
       </div>
     </div>
