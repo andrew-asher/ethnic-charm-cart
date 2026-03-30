@@ -25,16 +25,16 @@ const Navbar = () => {
             <button
               key={item}
               onClick={() => scrollTo(item.toLowerCase())}
-              className="font-body text-sm font-medium text-[hsl(var(--gold-light))] hover:text-[hsl(var(--gold))] transition-colors tracking-wide uppercase"
+              className="font-body text-sm font-medium text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase"
             >
               {item}
             </button>
           ))}
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative p-2.5 hover:bg-[hsl(var(--gold))]/10 rounded-full transition-colors"
+            className="relative p-2.5 hover:bg-accent/10 rounded-full transition-colors"
           >
-            <ShoppingBag className="w-5 h-5 text-[hsl(var(--gold-light))]" />
+            <ShoppingBag className="w-5 h-5 text-muted-foreground" />
             {totalItems > 0 && (
               <span className="absolute -top-0.5 -right-0.5 bg-primary text-primary-foreground text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">
                 {totalItems}
