@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+// Force HMR boundary
 import { products as defaultProducts, Product } from '@/data/products';
 
 // Extended product type for admin
