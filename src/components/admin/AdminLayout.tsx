@@ -78,10 +78,10 @@ const AdminLayout = () => {
         </nav>
 
         {/* Footer */}
-        <div className="p-2 border-t border-border">
+        <div className="p-2 border-t border-border/20">
           <NavLink
             to="/"
-            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-primary-foreground/50 hover:bg-primary-foreground/5 hover:text-primary-foreground/80 transition-colors"
           >
             <Monitor className="w-4 h-4 shrink-0" />
             {sidebarOpen && <span>View Site</span>}
@@ -89,7 +89,7 @@ const AdminLayout = () => {
           <button
             onClick={logout}
             className={cn(
-              "flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-destructive hover:bg-destructive/10 transition-colors w-full",
+              "flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-destructive/80 hover:bg-destructive/10 transition-colors w-full",
               !sidebarOpen && "justify-center"
             )}
           >
