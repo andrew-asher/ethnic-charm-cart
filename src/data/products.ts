@@ -45,7 +45,7 @@ export const products: Product[] = [
     category: 'Tops',
     image: top1,
     images: [top1],
-    description: 'A stunning rose pink kurti top with intricate chikankari-inspired embroidery. Crafted from premium cotton blend fabric sourced from India, this piece blends traditional artistry with modern elegance.',
+    description: 'A stunning rose pink kurti top with intricate embroidery inspired by Eelam textile traditions. Crafted from premium cotton blend fabric, this piece blends traditional artistry with modern elegance.',
     qualityNote: 'Premium cotton blend with hand-finished embroidery details.',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     colors: ['Rose Pink', 'Dusty Mauve'],
