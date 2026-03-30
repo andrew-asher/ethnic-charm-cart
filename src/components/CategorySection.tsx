@@ -26,7 +26,7 @@ const CategorySection = ({ onCategoryClick }: Props) => {
           <p className="font-body text-primary text-sm tracking-[0.3em] uppercase mb-2">Browse By</p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Categories</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {visible.map((cat) => {
             const img = cat.image || fallbackImages[cat.name] || '';
             return (
