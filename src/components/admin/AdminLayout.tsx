@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import thozhyLogo from '@/assets/thozhy-logo.jpeg';
+import thozhyIcon from '@/assets/thozhy-icon.png';
 
 const navItems = [
   { to: '/admin', icon: LayoutDashboard, label: 'Dashboard', end: true },
@@ -43,7 +43,7 @@ const AdminLayout = () => {
         <div className="h-16 flex items-center justify-between px-4 border-b border-border/20">
           {sidebarOpen && (
             <div className="flex items-center gap-2">
-              <img src={thozhyLogo} alt="Thozhy" className="h-8 w-8 rounded-full object-cover ring-1 ring-primary/30" />
+              <img src={thozhyIcon} alt="Thozhy" className="h-8 w-8 object-contain" />
               <span className="text-gradient-hero font-display text-lg font-bold">Thozhy</span>
             </div>
           )}

@@ -1,7 +1,7 @@
 import { ShoppingBag, Menu, X } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useState } from 'react';
-import thozhyLogo from '@/assets/thozhy-logo.jpeg';
+import thozhyIcon from '@/assets/thozhy-icon.png';
 
 const Navbar = () => {
   const { totalItems, setIsCartOpen } = useCart();
@@ -15,8 +15,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/50">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <button onClick={() => scrollTo('hero')} className="flex items-center gap-3 group">
-          <img src={thozhyLogo} alt="Thozhy" className="h-9 w-9 rounded-full object-cover ring-2 ring-primary/30 group-hover:ring-primary/60 transition-all" />
+        <button onClick={() => scrollTo('hero')} className="flex items-center gap-2.5 group">
+          <img src={thozhyIcon} alt="Thozhy" className="h-10 w-10 object-contain drop-shadow-sm group-hover:scale-105 transition-transform" />
           <div className="flex flex-col items-start leading-tight">
             <span className="font-display text-xl font-bold tracking-wide text-gradient-hero">Thozhy</span>
             <span className="font-body text-[9px] font-medium tracking-[0.35em] uppercase text-muted-foreground">London · Sri Lanka</span>
