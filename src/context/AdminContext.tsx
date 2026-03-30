@@ -54,20 +54,12 @@ export interface ComboOffer {
   visible: boolean;
 }
 
-export interface HeroSlide {
-  id: string;
-  imageUrl: string;
-  order: number;
-  visible: boolean;
-}
-
 export interface HeroSettings {
   backgroundImage: string;
   title: string;
   subtitle: string;
   ctaText: string;
   secondaryCtaText: string;
-  slides: HeroSlide[];
 }
 
 export interface WhatsAppSettings {
@@ -159,7 +151,6 @@ const defaultHero: HeroSettings = {
   subtitle: 'Premium South Asian Ethnic Wear for Women',
   ctaText: 'Shop Now',
   secondaryCtaText: 'Order via WhatsApp',
-  slides: [],
 };
 
 const defaultWhatsApp: WhatsAppSettings = {
