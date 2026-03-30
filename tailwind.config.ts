@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Playfair Display', 'Georgia', 'serif'],
+        display: ['Libre Baskerville', 'Georgia', 'serif'],
         body: ['Outfit', 'system-ui', 'sans-serif'],
       },
       colors: {
@@ -53,7 +53,6 @@ export default {
         },
         gold: "hsl(var(--gold))",
         "gold-light": "hsl(var(--gold-light))",
-        "gold-dark": "hsl(var(--gold-dark))",
         rose: "hsl(var(--rose))",
         "rose-light": "hsl(var(--rose-light))",
         blush: "hsl(var(--blush))",
