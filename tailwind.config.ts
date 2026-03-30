@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Libre Baskerville', 'Georgia', 'serif'],
+        display: ['Playfair Display', 'Georgia', 'serif'],
         body: ['Outfit', 'system-ui', 'sans-serif'],
       },
       colors: {
@@ -53,6 +53,7 @@ export default {
         },
         gold: "hsl(var(--gold))",
         "gold-light": "hsl(var(--gold-light))",
+        "gold-dark": "hsl(var(--gold-dark))",
         rose: "hsl(var(--rose))",
         "rose-light": "hsl(var(--rose-light))",
         blush: "hsl(var(--blush))",
@@ -63,6 +64,7 @@ export default {
         peach: "hsl(var(--peach))",
         olive: "hsl(var(--olive))",
         "warm-brown": "hsl(var(--warm-brown))",
+        charcoal: "hsl(var(--charcoal))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

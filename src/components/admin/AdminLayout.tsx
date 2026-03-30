@@ -3,10 +3,11 @@ import { useAdmin } from '@/context/AdminContext';
 import { useState } from 'react';
 import {
   LayoutDashboard, Package, FolderOpen, Layers, Monitor, MessageSquare,
-  Star, FileText, Settings, LogOut, Menu, X, ChevronLeft, Gift
+  Star, FileText, LogOut, Menu, X, ChevronLeft, Gift
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import thozhyLogo from '@/assets/thozhy-logo.jpeg';
 
 const navItems = [
   { to: '/admin', icon: LayoutDashboard, label: 'Dashboard', end: true },
@@ -34,17 +35,22 @@ const AdminLayout = () => {
 
       {/* Sidebar */}
       <aside className={cn(
-        "fixed top-0 left-0 h-full bg-card border-r border-border z-50 flex flex-col transition-all duration-300",
+        "fixed top-0 left-0 h-full bg-warm-brown border-r border-border/20 z-50 flex flex-col transition-all duration-300",
         sidebarOpen ? "w-60" : "w-16",
         mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
       )}>
         {/* Brand */}
-        <div className="h-16 flex items-center justify-between px-4 border-b border-border">
-          {sidebarOpen && <span className="text-gradient-hero font-display text-lg font-bold">Thozhy</span>}
-          <Button variant="ghost" size="icon" className="hidden lg:flex" onClick={() => setSidebarOpen(!sidebarOpen)}>
+        <div className="h-16 flex items-center justify-between px-4 border-b border-border/20">
+          {sidebarOpen && (
+            <div className="flex items-center gap-2">
+              <img src={thozhyLogo} alt="Thozhy" className="h-8 w-8 rounded-full object-cover ring-1 ring-primary/30" />
+              <span className="text-gradient-hero font-display text-lg font-bold">Thozhy</span>
+            </div>
+          )}
+          <Button variant="ghost" size="icon" className="hidden lg:flex text-primary-foreground/60 hover:text-primary-foreground" onClick={() => setSidebarOpen(!sidebarOpen)}>
             <ChevronLeft className={cn("w-4 h-4 transition-transform", !sidebarOpen && "rotate-180")} />
           </Button>
-          <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setMobileOpen(false)}>
+          <Button variant="ghost" size="icon" className="lg:hidden text-primary-foreground/60" onClick={() => setMobileOpen(false)}>
             <X className="w-4 h-4" />
           </Button>
         </div>
@@ -60,8 +66,8 @@ const AdminLayout = () => {
               className={({ isActive }) => cn(
                 "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                  ? "bg-primary/20 text-primary"
+                  : "text-primary-foreground/50 hover:bg-primary-foreground/5 hover:text-primary-foreground/80",
                 !sidebarOpen && "justify-center"
               )}
             >
@@ -72,10 +78,10 @@ const AdminLayout = () => {
         </nav>
 
         {/* Footer */}
-        <div className="p-2 border-t border-border">
+        <div className="p-2 border-t border-border/20">
           <NavLink
             to="/"
-            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-primary-foreground/50 hover:bg-primary-foreground/5 hover:text-primary-foreground/80 transition-colors"
           >
             <Monitor className="w-4 h-4 shrink-0" />
             {sidebarOpen && <span>View Site</span>}
@@ -83,7 +89,7 @@ const AdminLayout = () => {
           <button
             onClick={logout}
             className={cn(
-              "flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-destructive hover:bg-destructive/10 transition-colors w-full",
+              "flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-destructive/80 hover:bg-destructive/10 transition-colors w-full",
               !sidebarOpen && "justify-center"
             )}
           >

@@ -6,16 +6,14 @@ import saree1 from '@/assets/products/saree-1.jpg';
 import saree2 from '@/assets/products/saree-2.jpg';
 import saree3 from '@/assets/products/saree-3.jpg';
 import saree4 from '@/assets/products/saree-4.jpg';
-import gown1 from '@/assets/products/gown-1.jpg';
-import gown2 from '@/assets/products/gown-2.jpg';
-import gown3 from '@/assets/products/gown-3.jpg';
-import gown4 from '@/assets/products/gown-4.jpg';
+
+
 import jimmiki1 from '@/assets/products/jimmiki-1.jpg';
 import chain1 from '@/assets/products/chain-1.jpg';
 import nosepin1 from '@/assets/products/nosepin-1.jpg';
 import earpiece1 from '@/assets/products/earpiece-1.jpg';
 
-export type Category = 'Tops' | 'Sarees' | 'Gowns' | 'Premium Imitation Jewellery';
+export type Category = 'Tops' | 'Sarees' | 'Premium Imitation Jewellery' | string;
 
 export type Subcategory = string;
 
@@ -45,7 +43,7 @@ export const products: Product[] = [
     category: 'Tops',
     image: top1,
     images: [top1],
-    description: 'A stunning rose pink kurti top with intricate chikankari-inspired embroidery. Crafted from premium cotton blend fabric sourced from India, this piece blends traditional artistry with modern elegance.',
+    description: 'A stunning rose pink kurti top with intricate embroidery inspired by Eelam textile traditions. Crafted from premium cotton blend fabric, this piece blends traditional artistry with modern elegance.',
     qualityNote: 'Premium cotton blend with hand-finished embroidery details.',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     colors: ['Rose Pink', 'Dusty Mauve'],
@@ -101,7 +99,7 @@ export const products: Product[] = [
     category: 'Sarees',
     image: saree1,
     images: [saree1],
-    description: 'A magnificent ruby red silk saree with a lustrous gold zari border. This heritage piece celebrates the finest weaving traditions of South India.',
+    description: 'A magnificent ruby red silk saree with a lustrous gold zari border. This heritage piece celebrates the finest weaving traditions of Eelam artisans.',
     qualityNote: 'Pure silk with real zari border, sourced from traditional weavers.',
     sizes: ['Free Size'],
     colors: ['Ruby Red'],
@@ -147,62 +145,6 @@ export const products: Product[] = [
     sizes: ['Free Size'],
     colors: ['Pearl White'],
     badge: 'Limited Stock',
-  },
-  // Gowns
-  {
-    id: 'gown-1',
-    name: 'Lavender Festive Gown',
-    subtitle: 'Floor-Length Anarkali Gown',
-    price: 120,
-    category: 'Gowns',
-    image: gown1,
-    images: [gown1],
-    description: 'A breathtaking lavender floor-length anarkali gown with delicate lace detailing. Designed for festive celebrations and grand occasions.',
-    qualityNote: 'Premium georgette with lace overlay, fully lined.',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    colors: ['Lavender', 'Lilac'],
-    badge: 'New Collection',
-  },
-  {
-    id: 'gown-2',
-    name: 'Emerald Evening Gown',
-    subtitle: 'Embroidered Green Anarkali',
-    price: 135,
-    category: 'Gowns',
-    image: gown2,
-    images: [gown2],
-    description: 'A stunning emerald green gown with rich gold embroidery that captures the essence of South Asian royal fashion. A showstopper for any occasion.',
-    qualityNote: 'Heavy embroidery on premium fabric, fully handcrafted.',
-    sizes: ['S', 'M', 'L', 'XL'],
-    colors: ['Emerald Green'],
-    badge: 'Limited Stock',
-  },
-  {
-    id: 'gown-3',
-    name: 'Blush Royal Gown',
-    subtitle: 'Embellished Pink Anarkali Gown',
-    price: 145,
-    category: 'Gowns',
-    image: gown3,
-    images: [gown3],
-    description: 'A romantic blush pink gown with exquisite embellishments and a flowing silhouette. Perfect for weddings and engagement celebrations.',
-    qualityNote: 'Net overlay with stone embellishments, premium inner lining.',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    colors: ['Blush Pink', 'Peach'],
-  },
-  {
-    id: 'gown-4',
-    name: 'Maroon Aura Gown',
-    subtitle: 'Royal Maroon & Gold Anarkali',
-    price: 155,
-    category: 'Gowns',
-    image: gown4,
-    images: [gown4],
-    description: 'A majestic maroon gown with elaborate gold embroidery that exudes royal elegance. The dramatic silhouette makes it perfect for grand celebrations.',
-    qualityNote: 'Premium velvet with gold zardozi embroidery, fully lined.',
-    sizes: ['S', 'M', 'L', 'XL'],
-    colors: ['Maroon'],
-    badge: 'New Collection',
   },
   // Premium Imitation Jewellery
   {
