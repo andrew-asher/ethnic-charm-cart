@@ -160,7 +160,7 @@ const defaultWhatsApp: WhatsAppSettings = {
   showOnProductDetail: true,
   showOnCart: true,
   showFloatingButton: true,
-  deliveryNote: 'London delivery & pickup available',
+  deliveryNote: 'London delivery & Sri Lanka shipping available',
 };
 
 const defaultTestimonials: Testimonial[] = [
