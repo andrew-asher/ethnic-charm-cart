@@ -171,14 +171,14 @@ const defaultTestimonials: Testimonial[] = [
 
 const defaultSiteContent: SiteContent = {
   aboutTitle: 'Our Story',
-  aboutText: 'Thozhy is a women\'s ethnic fashion brand with Eelam roots, growing across Sri Lanka and London. We offer a carefully curated selection of South Asian ethnic wear, combining our own Thozhy designs with handpicked pieces sourced from trusted artisans and collections.\n\nOur style reflects elegance, simplicity, and cultural beauty—blending aesthetic, modern looks with traditional craftsmanship. Every piece is chosen with intention, focusing on quality, detail, and a refined feminine appeal.\n\nThozhy represents more than fashion—it is a journey of heritage, identity, and timeless style, brought together with a minimalist yet premium touch.',
-  tagline: 'Premium South Asian Ethnic Wear for Women',
-  subtext: 'Carefully curated ethnic wear and jewellery from Sri Lanka and India',
+  aboutText: 'Thozhy is a women\'s ethnic fashion brand with Eelam roots, growing across Sri Lanka and London. We offer a carefully curated selection of ethnic wear — combining our own Thozhy designs with handpicked premium pieces sourced from trusted Eelam artisans.\n\nOur style reflects elegance, simplicity, and cultural beauty — blending modern aesthetics with traditional craftsmanship rooted in our heritage. Every piece is chosen with intention, focusing on quality, detail, and a refined feminine appeal.\n\nThozhy represents more than fashion — it is a journey of heritage, identity, and timeless style, brought together with a minimalist yet premium touch.',
+  tagline: 'Premium Ethnic Wear — Rooted in Eelam',
+  subtext: 'Carefully curated ethnic wear and jewellery from Sri Lanka',
   deliveryNote: 'Free delivery across London for orders over £100',
-  pickupNote: 'Pickup available in Central London',
+  pickupNote: 'Pickup available in Central London & Sri Lanka',
   instagramLink: 'https://instagram.com/thozhy.london',
-  footerText: '© 2026 Thozhy London. All rights reserved.',
-  contactLocation: 'London, United Kingdom',
+  footerText: '© 2026 Thozhy. All rights reserved.',
+  contactLocation: 'London, UK & Sri Lanka',
 };
 
 const defaultComboOffers: ComboOffer[] = [];
