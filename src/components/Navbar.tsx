@@ -60,12 +60,12 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-[hsl(25,15%,10%)]/95 backdrop-blur-lg border-b border-[hsl(var(--gold))]/20 px-4 pb-4 animate-fade-in-up">
+        <div className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border px-4 pb-4 animate-fade-in-up">
           {['Shop', 'About', 'Contact'].map(item => (
             <button
               key={item}
               onClick={() => scrollTo(item.toLowerCase())}
-              className="block w-full text-left py-3 font-body text-sm font-medium text-[hsl(var(--gold-light))] hover:text-[hsl(var(--gold))] transition-colors tracking-wide uppercase"
+              className="block w-full text-left py-3 font-body text-sm font-medium text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase"
             >
               {item}
             </button>
