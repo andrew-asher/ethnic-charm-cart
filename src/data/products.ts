@@ -101,7 +101,7 @@ export const products: Product[] = [
     category: 'Sarees',
     image: saree1,
     images: [saree1],
-    description: 'A magnificent ruby red silk saree with a lustrous gold zari border. This heritage piece celebrates the finest weaving traditions of South India.',
+    description: 'A magnificent ruby red silk saree with a lustrous gold zari border. This heritage piece celebrates the finest weaving traditions of Eelam artisans.',
     qualityNote: 'Pure silk with real zari border, sourced from traditional weavers.',
     sizes: ['Free Size'],
     colors: ['Ruby Red'],
