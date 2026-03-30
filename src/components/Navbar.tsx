@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <button onClick={() => scrollTo('hero')} className="flex items-baseline gap-3">
-          <span className="font-display text-2xl font-bold tracking-wide text-gradient-hero">thozhi</span>
+          <span className="font-display text-2xl font-bold tracking-wide text-gradient-hero">thozhy</span>
           <span className="font-body text-xs font-medium tracking-[0.35em] uppercase text-muted-foreground">London</span>
         </button>
 
