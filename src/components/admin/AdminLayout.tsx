@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import thozhyLogo from '@/assets/thozhy-logo.jpeg';
+import thozhyIcon from '@/assets/thozhy-icon.png';
 
 const navItems = [
   { to: '/admin', icon: LayoutDashboard, label: 'Dashboard', end: true },

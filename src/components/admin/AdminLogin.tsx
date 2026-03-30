@@ -3,7 +3,6 @@ import { useAdmin } from '@/context/AdminContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Lock } from 'lucide-react';
-import thozhyLogo from '@/assets/thozhy-logo.jpeg';
 
 const AdminLogin = () => {
   const { login } = useAdmin();
@@ -22,7 +21,9 @@ const AdminLogin = () => {
     <div className="min-h-screen bg-warm-brown flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <img src={thozhyLogo} alt="Thozhy" className="w-20 h-20 mx-auto mb-4 rounded-full object-cover ring-2 ring-primary/40 shadow-lg" />
+          <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <Lock className="w-7 h-7 text-primary" />
+          </div>
           <h1 className="font-display text-2xl font-bold text-gradient-hero">Thozhy Admin</h1>
           <p className="text-sm text-primary-foreground/50 mt-1">Enter your password to continue</p>
         </div>

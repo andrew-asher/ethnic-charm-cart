@@ -1,6 +1,5 @@
 import heroBanner from '@/assets/hero-banner.jpg';
 import { getWhatsAppLink } from '@/lib/whatsapp';
-import thozhyLogo from '@/assets/thozhy-logo.jpeg';
 
 const HeroSection = () => {
   const scrollToShop = () => document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' });
@@ -22,12 +21,9 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-4 mb-4 animate-fade-in-up">
-            <img src={thozhyLogo} alt="Thozhy" className="w-16 h-16 rounded-full object-cover ring-2 ring-primary/40 shadow-lg" />
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-primary-foreground" style={{ lineHeight: 1.1 }}>
-              <span className="text-gradient-hero">Thozhy</span>
-            </h1>
-          </div>
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-3 animate-fade-in-up" style={{ lineHeight: 1.1 }}>
+            <span className="text-gradient-hero">Thozhy</span>
+          </h1>
 
           <p className="font-body text-lg md:text-xl font-light text-primary-foreground/90 mb-2 animate-fade-in-up-delay-1 tracking-wide">
             Rooted in Eelam. Styled for You.
