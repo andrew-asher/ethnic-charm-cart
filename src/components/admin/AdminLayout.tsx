@@ -3,10 +3,11 @@ import { useAdmin } from '@/context/AdminContext';
 import { useState } from 'react';
 import {
   LayoutDashboard, Package, FolderOpen, Layers, Monitor, MessageSquare,
-  Star, FileText, Settings, LogOut, Menu, X, ChevronLeft, Gift
+  Star, FileText, LogOut, Menu, X, ChevronLeft, Gift
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import thozhyLogo from '@/assets/thozhy-logo.jpeg';
 
 const navItems = [
   { to: '/admin', icon: LayoutDashboard, label: 'Dashboard', end: true },
