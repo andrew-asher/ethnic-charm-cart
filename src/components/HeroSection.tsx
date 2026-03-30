@@ -1,16 +1,44 @@
-import heroBanner from '@/assets/hero-banner.jpg';
+import { useState, useEffect } from 'react';
+import heroSlide1 from '@/assets/hero-slide-1.jpg';
+import heroSlide2 from '@/assets/hero-slide-2.jpg';
+import heroSlide3 from '@/assets/hero-slide-3.jpg';
+import heroSlide4 from '@/assets/hero-slide-4.jpg';
+import heroSlide5 from '@/assets/hero-slide-5.jpg';
 import { getWhatsAppLink } from '@/lib/whatsapp';
 
+const slides = [heroSlide1, heroSlide2, heroSlide3, heroSlide4, heroSlide5];
+
 const HeroSection = () => {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   const scrollToShop = () => document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img src={heroBanner} alt="Thozhy ethnic fashion" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/40 to-transparent" />
-      </div>
+      {/* Slideshow backgrounds */}
+      {slides.map((slide, i) => (
+        <div
+          key={i}
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+          style={{ opacity: i === current ? 1 : 0 }}
+        >
+          <img
+            src={slide}
+            alt={`Thozhy ethnic fashion ${i + 1}`}
+            className="w-full h-full object-cover"
+            width={1920}
+            height={1080}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/40 to-transparent" />
+        </div>
+      ))}
 
       <div className="relative container mx-auto px-4 py-20">
         <div className="max-w-xl">
@@ -43,6 +71,19 @@ const HeroSection = () => {
             >
               Order via WhatsApp
             </a>
+          </div>
+
+          {/* Slide indicators */}
+          <div className="flex gap-2 mt-8 animate-fade-in-up-delay-3">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  i === current ? 'w-8 bg-primary' : 'w-3 bg-primary-foreground/30'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
