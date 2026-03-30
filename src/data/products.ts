@@ -6,10 +6,8 @@ import saree1 from '@/assets/products/saree-1.jpg';
 import saree2 from '@/assets/products/saree-2.jpg';
 import saree3 from '@/assets/products/saree-3.jpg';
 import saree4 from '@/assets/products/saree-4.jpg';
-import gown1 from '@/assets/products/gown-1.jpg';
-import gown2 from '@/assets/products/gown-2.jpg';
-import gown3 from '@/assets/products/gown-3.jpg';
-import gown4 from '@/assets/products/gown-4.jpg';
+
+
 import jimmiki1 from '@/assets/products/jimmiki-1.jpg';
 import chain1 from '@/assets/products/chain-1.jpg';
 import nosepin1 from '@/assets/products/nosepin-1.jpg';
