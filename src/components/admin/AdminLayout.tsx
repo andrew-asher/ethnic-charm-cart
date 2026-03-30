@@ -66,8 +66,8 @@ const AdminLayout = () => {
               className={({ isActive }) => cn(
                 "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                  ? "bg-primary/20 text-primary"
+                  : "text-primary-foreground/50 hover:bg-primary-foreground/5 hover:text-primary-foreground/80",
                 !sidebarOpen && "justify-center"
               )}
             >
