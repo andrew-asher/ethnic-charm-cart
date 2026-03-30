@@ -43,7 +43,7 @@ const AdminLayout = () => {
         <div className="h-16 flex items-center justify-between px-4 border-b border-border/20">
           {sidebarOpen && (
             <div className="flex items-center gap-2">
-              <img src={thozhyLogo} alt="Thozhy" className="h-8 w-8 rounded-full object-cover ring-1 ring-primary/30" />
+              <img src={thozhyIcon} alt="Thozhy" className="h-8 w-8 object-contain" />
               <span className="text-gradient-hero font-display text-lg font-bold">Thozhy</span>
             </div>
           )}
