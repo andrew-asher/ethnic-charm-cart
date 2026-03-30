@@ -26,7 +26,7 @@ const HeroSection = () => {
             Rooted in Eelam. Styled for You.
           </p>
           <p className="font-body text-sm md:text-base text-primary-foreground/60 mb-10 animate-fade-in-up-delay-2 max-w-md leading-relaxed">
-            Our own designs blended with handpicked premium ethnic wear — woven by the hands of trusted artisans from Sri Lanka and India, delivered with love in London.
+            Our own Thozhy designs paired with handpicked premium ethnic wear — crafted by trusted artisans from Eelam, delivered with love in London.
           </p>
           <div className="flex flex-wrap gap-4 animate-fade-in-up-delay-3">
             <button
