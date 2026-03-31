@@ -4,10 +4,11 @@ import heroSlide2 from '@/assets/hero-slide-2.jpg';
 import heroSlide3 from '@/assets/hero-slide-3.jpg';
 import heroSlide4 from '@/assets/hero-slide-4.jpg';
 import heroSlide5 from '@/assets/hero-slide-5.jpg';
+import heroSlide6 from '@/assets/hero-slide-6.jpg';
 import { getWhatsAppLink } from '@/lib/whatsapp';
 import { useAdmin } from '@/context/AdminContext';
 
-const defaultSlides = [heroSlide1, heroSlide2, heroSlide3, heroSlide4, heroSlide5];
+const defaultSlides = [heroSlide1, heroSlide2, heroSlide3, heroSlide4, heroSlide5, heroSlide6];
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
