@@ -7,7 +7,7 @@ import heroSlide5 from '@/assets/hero-slide-5.jpg';
 import { getWhatsAppLink } from '@/lib/whatsapp';
 import { useAdmin } from '@/context/AdminContext';
 
-const defaultSlides = [heroSlide1, heroSlide2, heroSlide3, heroSlide4, heroSlide5];
+const defaultSlides = [heroSlide1, heroSlide2, heroSlide3, heroSlide4, heroSlide5, heroSlide6];
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
