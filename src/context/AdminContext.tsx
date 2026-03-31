@@ -192,7 +192,44 @@ const defaultSiteContent: SiteContent = {
   contactLocation: 'London, UK & Sri Lanka',
 };
 
-const defaultComboOffers: ComboOffer[] = [];
+const defaultComboOffers: ComboOffer[] = [
+  {
+    id: 'combo-1',
+    title: 'Saree + Jimmiki Combo',
+    description: 'Pair our stunning Ruby Heritage Saree with traditional Temple Jimmiki Earrings for the perfect festive look.',
+    image: '',
+    productIds: ['saree-1', 'jewel-1'],
+    originalPrice: 103,
+    comboPrice: 89,
+    badge: 'Best Seller',
+    featured: true,
+    visible: true,
+  },
+  {
+    id: 'combo-2',
+    title: 'Gown + Chain Combo',
+    description: 'Complete your gown look with the Heritage Temple Chain — elegance redefined for any grand occasion.',
+    image: '',
+    productIds: ['gown-1', 'jewel-2'],
+    originalPrice: 148,
+    comboPrice: 125,
+    badge: 'Save 15%',
+    featured: true,
+    visible: true,
+  },
+  {
+    id: 'combo-3',
+    title: 'Kurti + Ear Piece Set',
+    description: 'Style our Rose Ember Kurti with the Royal Ear Piece Set for a chic ethnic everyday look.',
+    image: '',
+    productIds: ['top-1', 'jewel-4'],
+    originalPrice: 57,
+    comboPrice: 48,
+    badge: 'New Combo',
+    featured: true,
+    visible: true,
+  },
+];
 
 function convertToAdmin(p: Product): AdminProduct {
   return {
