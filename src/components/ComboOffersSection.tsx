@@ -2,6 +2,15 @@ import { useAdmin } from '@/context/AdminContext';
 import { useCart } from '@/context/CartContext';
 import { Gift, ShoppingBag } from 'lucide-react';
 import { getWhatsAppLink } from '@/lib/whatsapp';
+import combo1Img from '@/assets/combo-1.jpg';
+import combo2Img from '@/assets/combo-2.jpg';
+import combo3Img from '@/assets/combo-3.jpg';
+
+const comboFallbackImages: Record<string, string> = {
+  'combo-1': combo1Img,
+  'combo-2': combo2Img,
+  'combo-3': combo3Img,
+};
 
 const ComboOffersSection = () => {
   const { comboOffers, products } = useAdmin();
@@ -38,8 +47,8 @@ const ComboOffersSection = () => {
                   <span className="absolute top-6 left-6 z-10 text-[11px] font-semibold bg-accent text-accent-foreground px-3 py-1 rounded-full">
                     {combo.badge || 'Combo Offer'}
                   </span>
-                  {combo.image ? (
-                    <img src={combo.image} alt={combo.title} className="w-full h-44 object-cover rounded-xl" />
+                  {(combo.image || comboFallbackImages[combo.id]) ? (
+                    <img src={combo.image || comboFallbackImages[combo.id]} alt={combo.title} className="w-full h-44 object-cover rounded-xl" />
                   ) : (
                     <div className="flex gap-2 h-44">
                       {comboProducts.slice(0, 3).map(p => (
