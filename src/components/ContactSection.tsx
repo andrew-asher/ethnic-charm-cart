@@ -22,7 +22,7 @@ const ContactSection = () => (
         <div className="flex flex-col items-center p-6 bg-card rounded-2xl card-product group">
           <Instagram className="w-8 h-8 text-rose-light mb-3 group-hover:scale-110 transition-transform" />
           <h3 className="font-display text-base font-semibold text-foreground mb-1">Instagram</h3>
-          <p className="font-body text-sm text-muted-foreground text-center">@thozhy.london</p>
+          <p className="font-body text-sm text-muted-foreground text-center">@thozhy.fashions</p>
         </div>
         <div className="flex flex-col items-center p-6 bg-card rounded-2xl card-product group">
           <MapPin className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform" />

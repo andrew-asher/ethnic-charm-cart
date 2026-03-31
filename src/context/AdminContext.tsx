@@ -187,7 +187,7 @@ const defaultSiteContent: SiteContent = {
   subtext: 'Carefully curated ethnic wear and jewellery from Sri Lanka',
   deliveryNote: 'Free delivery across London for orders over £100',
   pickupNote: 'Pickup available in Central London & Sri Lanka',
-  instagramLink: 'https://instagram.com/thozhy.london',
+  instagramLink: 'https://instagram.com/thozhy.fashions',
   footerText: '© 2026 Thozhy. All rights reserved.',
   contactLocation: 'London, UK & Sri Lanka',
 };
