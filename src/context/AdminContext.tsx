@@ -145,8 +145,9 @@ const ADMIN_PASSWORD = 'thozhi2026';
 
 const defaultCategories: AdminCategory[] = [
   { id: 'cat-tops', name: 'Tops', description: 'Elegant kurti tops and tunics', image: '', order: 1, visible: true, subcategories: [{ id: 'sub-casual', name: 'Casual Wear', order: 1 }, { id: 'sub-party', name: 'Party Wear', order: 2 }, { id: 'sub-office', name: 'Office Wear', order: 3 }] },
-  { id: 'cat-sarees', name: 'Sarees', description: 'Traditional silk and designer sarees', image: '', order: 2, visible: true, subcategories: [{ id: 'sub-wedding', name: 'Wedding Collection', order: 1 }, { id: 'sub-party-saree', name: 'Party Wear', order: 2 }, { id: 'sub-casual-saree', name: 'Casual Wear', order: 3 }, { id: 'sub-silk', name: 'Pure Silk', order: 4 }] },
-  { id: 'cat-jewellery', name: 'Premium Imitation Jewellery', description: 'Elegant ethnic jewellery pieces', image: '', order: 3, visible: true, subcategories: [{ id: 'sub-jimmikis', name: 'Jimmikis', order: 1 }, { id: 'sub-chains', name: 'Chains', order: 2 }, { id: 'sub-nose-pins', name: 'Nose Pins', order: 3 }, { id: 'sub-ear-pieces', name: 'Ear Pieces', order: 4 }] },
+  { id: 'cat-gowns', name: 'Gowns', description: 'Stunning ethnic floor-length gowns', image: '', order: 2, visible: true, subcategories: [{ id: 'sub-gown-wedding', name: 'Wedding Gowns', order: 1 }, { id: 'sub-gown-party', name: 'Party Gowns', order: 2 }, { id: 'sub-gown-reception', name: 'Reception Wear', order: 3 }] },
+  { id: 'cat-sarees', name: 'Sarees', description: 'Traditional silk and designer sarees', image: '', order: 3, visible: true, subcategories: [{ id: 'sub-wedding', name: 'Wedding Collection', order: 1 }, { id: 'sub-party-saree', name: 'Party Wear', order: 2 }, { id: 'sub-casual-saree', name: 'Casual Wear', order: 3 }, { id: 'sub-silk', name: 'Pure Silk', order: 4 }] },
+  { id: 'cat-jewellery', name: 'Premium Imitation Jewellery', description: 'Elegant ethnic jewellery pieces', image: '', order: 4, visible: true, subcategories: [{ id: 'sub-jimmikis', name: 'Jimmikis', order: 1 }, { id: 'sub-chains', name: 'Chains', order: 2 }, { id: 'sub-nose-pins', name: 'Nose Pins', order: 3 }, { id: 'sub-ear-pieces', name: 'Ear Pieces', order: 4 }] },
 ];
 
 const defaultCollections: AdminCollection[] = [
@@ -220,24 +221,35 @@ function loadFromStorage<T>(key: string, fallback: T): T {
         return { ...fallback, ...sc, aboutText: (fallback as Record<string, unknown>).aboutText } as T;
       }
     }
-    // Force-migrate products to include jewellery if missing
+    // Force-migrate products to include gowns and jewellery if missing
     if (key === 'admin_products' && Array.isArray(parsed)) {
-      const hasJewellery = parsed.some((p: { category?: string }) => p.category === 'Premium Imitation Jewellery');
+      let products = parsed;
+      const hasJewellery = products.some((p: { category?: string }) => p.category === 'Premium Imitation Jewellery');
       if (!hasJewellery) {
         const jewelleryDefaults = (fallback as unknown[]).filter((p: any) => p.category === 'Premium Imitation Jewellery');
-        return [...parsed, ...jewelleryDefaults] as unknown as T;
+        products = [...products, ...jewelleryDefaults];
       }
+      const hasGowns = products.some((p: { category?: string }) => p.category === 'Gowns');
+      if (!hasGowns) {
+        const gownDefaults = (fallback as unknown[]).filter((p: any) => p.category === 'Gowns');
+        products = [...products, ...gownDefaults];
+      }
+      if (products.length !== parsed.length) return products as unknown as T;
     }
-    // Force-migrate categories to include jewellery if missing, and remove Gowns
+    // Force-migrate categories to include Gowns and jewellery if missing
     if (key === 'admin_categories' && Array.isArray(parsed)) {
-      let cats = parsed.filter((c: { name?: string }) => c.name !== 'Gowns');
+      let cats = parsed;
       const hasJewellery = cats.some((c: { name?: string }) => c.name === 'Premium Imitation Jewellery');
       if (!hasJewellery) {
         const jewelleryCategory = (fallback as unknown[]).find((c: any) => c.name === 'Premium Imitation Jewellery');
         if (jewelleryCategory) cats = [...cats, jewelleryCategory];
       }
+      const hasGowns = cats.some((c: { name?: string }) => c.name === 'Gowns');
+      if (!hasGowns) {
+        const gownsCategory = (fallback as unknown[]).find((c: any) => c.name === 'Gowns');
+        if (gownsCategory) cats = [...cats, gownsCategory];
+      }
       if (cats.length !== parsed.length) return cats as unknown as T;
-      if (!hasJewellery) return cats as unknown as T;
     }
     return parsed;
   } catch { return fallback; }

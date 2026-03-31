@@ -1,4 +1,4 @@
-import { X, ShoppingBag, MessageCircle, Shield } from 'lucide-react';
+import { X, ShoppingBag, MessageCircle, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Product } from '@/data/products';
 import { useCart } from '@/context/CartContext';
 import { generateProductWhatsAppLink } from '@/lib/whatsapp';
@@ -12,10 +12,12 @@ interface Props {
 const ProductDetailModal = ({ product, onClose }: Props) => {
   const { addItem } = useCart();
   const [selectedSize, setSelectedSize] = useState('');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!product) return null;
 
   const size = selectedSize || product.sizes[0];
+  const allImages = product.images.length > 0 ? product.images : [product.image];
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4" onClick={onClose}>
@@ -25,14 +27,43 @@ const ProductDetailModal = ({ product, onClose }: Props) => {
         onClick={e => e.stopPropagation()}
         style={{ boxShadow: 'var(--shadow-elevated)' }}
       >
-        <button onClick={onClose} className="absolute top-4 right-4 z-10 p-2 bg-card rounded-full hover:bg-secondary transition-colors">
+        <button onClick={onClose} className="absolute top-4 right-4 z-10 p-2 bg-card/80 backdrop-blur-sm rounded-full hover:bg-secondary transition-colors">
           <X className="w-5 h-5" />
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-          {/* Image */}
-          <div className="aspect-[3/4] md:aspect-auto">
-            <img src={product.image} alt={product.name} className="w-full h-full object-cover rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none" />
+          {/* Image Gallery */}
+          <div className="relative aspect-[3/4] md:aspect-auto bg-secondary/30">
+            <img
+              src={allImages[currentImageIndex]}
+              alt={product.name}
+              className="w-full h-full object-cover rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
+            />
+            {allImages.length > 1 && (
+              <>
+                <button
+                  onClick={() => setCurrentImageIndex(i => (i - 1 + allImages.length) % allImages.length)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 bg-card/80 backdrop-blur-sm rounded-full hover:bg-card transition-colors"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setCurrentImageIndex(i => (i + 1) % allImages.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-card/80 backdrop-blur-sm rounded-full hover:bg-card transition-colors"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                  {allImages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentImageIndex(i)}
+                      className={`w-2 h-2 rounded-full transition-colors ${i === currentImageIndex ? 'bg-primary' : 'bg-card/60'}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
           {/* Details */}
@@ -80,7 +111,7 @@ const ProductDetailModal = ({ product, onClose }: Props) => {
 
             {/* Quality note */}
             <div className="mt-4 flex items-start gap-2 p-3 bg-secondary rounded-lg">
-              <Shield className="w-4 h-4 text-gold mt-0.5 flex-shrink-0" />
+              <Shield className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
               <p className="font-body text-xs text-muted-foreground">{product.qualityNote}</p>
             </div>
 
@@ -96,7 +127,7 @@ const ProductDetailModal = ({ product, onClose }: Props) => {
                 href={generateProductWhatsAppLink(product, size)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-sage text-primary-foreground rounded-full font-body font-semibold hover:opacity-90 transition-opacity"
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-full font-body font-semibold hover:opacity-90 transition-opacity"
               >
                 <MessageCircle className="w-4 h-4" /> Order on WhatsApp
               </a>
