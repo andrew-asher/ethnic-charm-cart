@@ -221,24 +221,35 @@ function loadFromStorage<T>(key: string, fallback: T): T {
         return { ...fallback, ...sc, aboutText: (fallback as Record<string, unknown>).aboutText } as T;
       }
     }
-    // Force-migrate products to include jewellery if missing
+    // Force-migrate products to include gowns and jewellery if missing
     if (key === 'admin_products' && Array.isArray(parsed)) {
-      const hasJewellery = parsed.some((p: { category?: string }) => p.category === 'Premium Imitation Jewellery');
+      let products = parsed;
+      const hasJewellery = products.some((p: { category?: string }) => p.category === 'Premium Imitation Jewellery');
       if (!hasJewellery) {
         const jewelleryDefaults = (fallback as unknown[]).filter((p: any) => p.category === 'Premium Imitation Jewellery');
-        return [...parsed, ...jewelleryDefaults] as unknown as T;
+        products = [...products, ...jewelleryDefaults];
       }
+      const hasGowns = products.some((p: { category?: string }) => p.category === 'Gowns');
+      if (!hasGowns) {
+        const gownDefaults = (fallback as unknown[]).filter((p: any) => p.category === 'Gowns');
+        products = [...products, ...gownDefaults];
+      }
+      if (products.length !== parsed.length) return products as unknown as T;
     }
-    // Force-migrate categories to include jewellery if missing, and remove Gowns
+    // Force-migrate categories to include Gowns and jewellery if missing
     if (key === 'admin_categories' && Array.isArray(parsed)) {
-      let cats = parsed.filter((c: { name?: string }) => c.name !== 'Gowns');
+      let cats = parsed;
       const hasJewellery = cats.some((c: { name?: string }) => c.name === 'Premium Imitation Jewellery');
       if (!hasJewellery) {
         const jewelleryCategory = (fallback as unknown[]).find((c: any) => c.name === 'Premium Imitation Jewellery');
         if (jewelleryCategory) cats = [...cats, jewelleryCategory];
       }
+      const hasGowns = cats.some((c: { name?: string }) => c.name === 'Gowns');
+      if (!hasGowns) {
+        const gownsCategory = (fallback as unknown[]).find((c: any) => c.name === 'Gowns');
+        if (gownsCategory) cats = [...cats, gownsCategory];
+      }
       if (cats.length !== parsed.length) return cats as unknown as T;
-      if (!hasJewellery) return cats as unknown as T;
     }
     return parsed;
   } catch { return fallback; }
