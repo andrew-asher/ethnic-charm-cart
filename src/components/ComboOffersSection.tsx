@@ -47,8 +47,8 @@ const ComboOffersSection = () => {
                   <span className="absolute top-6 left-6 z-10 text-[11px] font-semibold bg-accent text-accent-foreground px-3 py-1 rounded-full">
                     {combo.badge || 'Combo Offer'}
                   </span>
-                  {combo.image ? (
-                    <img src={combo.image} alt={combo.title} className="w-full h-44 object-cover rounded-xl" />
+                  {(combo.image || comboFallbackImages[combo.id]) ? (
+                    <img src={combo.image || comboFallbackImages[combo.id]} alt={combo.title} className="w-full h-44 object-cover rounded-xl" />
                   ) : (
                     <div className="flex gap-2 h-44">
                       {comboProducts.slice(0, 3).map(p => (
