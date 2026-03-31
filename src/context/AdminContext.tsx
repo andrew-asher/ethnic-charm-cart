@@ -245,14 +245,14 @@ function convertToAdmin(p: Product): AdminProduct {
   };
 }
 
-const ADMIN_DATA_VERSION = 'v7_festive_combos';
+const ADMIN_DATA_VERSION = 'v8_festive_combos_fix';
 
 function loadFromStorage<T>(key: string, fallback: T): T {
   try {
     const currentVersion = localStorage.getItem('admin_data_version');
     if (currentVersion !== ADMIN_DATA_VERSION) {
       // Clear all admin data to force fresh defaults
-      ['admin_products', 'admin_categories', 'admin_collections', 'admin_hero', 'admin_combo_offers', 'admin_testimonials', 'admin_whatsapp', 'admin_site_content'].forEach(k => localStorage.removeItem(k));
+      ['admin_products', 'admin_categories', 'admin_collections', 'admin_hero', 'admin_combos', 'admin_combo_offers', 'admin_testimonials', 'admin_whatsapp', 'admin_site_content'].forEach(k => localStorage.removeItem(k));
       localStorage.setItem('admin_data_version', ADMIN_DATA_VERSION);
       return fallback;
     }
