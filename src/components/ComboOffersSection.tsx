@@ -2,6 +2,15 @@ import { useAdmin } from '@/context/AdminContext';
 import { useCart } from '@/context/CartContext';
 import { Gift, ShoppingBag } from 'lucide-react';
 import { getWhatsAppLink } from '@/lib/whatsapp';
+import combo1Img from '@/assets/combo-1.jpg';
+import combo2Img from '@/assets/combo-2.jpg';
+import combo3Img from '@/assets/combo-3.jpg';
+
+const comboFallbackImages: Record<string, string> = {
+  'combo-1': combo1Img,
+  'combo-2': combo2Img,
+  'combo-3': combo3Img,
+};
 
 const ComboOffersSection = () => {
   const { comboOffers, products } = useAdmin();
