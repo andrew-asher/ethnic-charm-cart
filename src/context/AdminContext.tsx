@@ -245,7 +245,7 @@ function convertToAdmin(p: Product): AdminProduct {
   };
 }
 
-const ADMIN_DATA_VERSION = 'v6_tops_subcategories';
+const ADMIN_DATA_VERSION = 'v7_festive_combos';
 
 function loadFromStorage<T>(key: string, fallback: T): T {
   try {
