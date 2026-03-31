@@ -26,7 +26,12 @@ const CategorySection = ({ onCategoryClick }: Props) => {
           <p className="font-body text-primary text-sm tracking-[0.3em] uppercase mb-2">Browse By</p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Categories</h2>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+        <div className={`grid gap-4 md:gap-6 max-w-6xl mx-auto ${
+          visible.length === 1 ? 'grid-cols-1 max-w-md' :
+          visible.length === 2 ? 'grid-cols-2 max-w-3xl' :
+          visible.length === 3 ? 'grid-cols-1 sm:grid-cols-3 max-w-5xl' :
+          'grid-cols-2 md:grid-cols-4'
+        }`}>
           {visible.map((cat) => {
             const img = cat.image || fallbackImages[cat.name] || '';
             return (
